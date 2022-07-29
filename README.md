@@ -1,14 +1,14 @@
 # docker-lamp-symfony5
 
 ## Table of Contents
-1. [What is this ?](#1.what-is-this)
-2. [Prerequisite](#2.prerequisite)
-3. [Installation](#3.installation)
-4. [New symfony project](#4.new-symfony-project)
-5. [New project configuration](#5.new-project-configuration)
-6. [Then](#6.then)
-7. [Git](#7.git)
-8. [Clone existing symfony project](#8.clone-existing-symfony-project)
+1. [What is this ?](#1-what-is-this)
+2. [Prerequisite](#2-prerequisites)
+3. [Installation](#3-installation)
+4. [New symfony project](#4-new-symfony-project)
+5. [New project configuration](#5-new-project-configuration)
+6. [Then](#6-then)
+7. [Git](#7-git)
+8. [Clone existing symfony project](#8-clone-existing-symfony-project)
 
 
 ## 1. What is this
