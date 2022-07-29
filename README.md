@@ -1,14 +1,14 @@
 # docker-lamp-symfony5
 
 ## Table of Contents
-1. [What is this ?](#hat-is-this)
-2. [Prerequisite](#prerequisite)
-3. [Installation](#installation)
-4. [New symfony project](#new-symfony-project)
-5. [New project configuration](#new-project-configuration)
-6. [Then](#installation)
-7. [Git](#installation)
-8. [Clone existing symfony project](#clone-existing-symfony-project)
+1. [What is this ?](#1.what-is-this)
+2. [Prerequisite](#2.prerequisite)
+3. [Installation](#3.installation)
+4. [New symfony project](#4.new-symfony-project)
+5. [New project configuration](#5.new-project-configuration)
+6. [Then](#6.then)
+7. [Git](#7.git)
+8. [Clone existing symfony project](#8.clone-existing-symfony-project)
 
 
 ## 1.What is this
@@ -21,7 +21,7 @@ It is composed of:
 - **docker_phpmyadmin** container: phpmyadmin for managing your database        
 - **docker_maildev** container: maildev as a smtp webmail development service
 
-Thanks to Yoan Bernabeu who initially authored the project at [gitlab project](https://gitlab.com/yoandev.co/environnement-de-developpement-symfony-5-avec-docker-et-docker-compose. Docker-lamp-symfony5 is just a 'repacked' github repository of what he did).
+Thanks to Yoan Bernabeu who initially authored the project at [Initial Project](https://gitlab.com/yoandev.co/environnement-de-developpement-symfony-5-avec-docker-et-docker-compose/). Docker-lamp-symfony5 is just a 'repacked' github repository of what he did.
 
 
 
@@ -77,11 +77,11 @@ You have to interact with your symfony project. To do this, you have to place yo
 ```
 $ docker exec -it www_docker_symfony bash
 ```
-Your can interact as usual with symfony and can create your database:
+Your can interact as usual with symfony and create your database:
 ```
 $ php bin/console doctrine:database:create
 ```
-Now, I won't teach you how to initiate a full symfony project, use the documentation.
+Now, I won't teach you how to initiate a full symfony project, use the [documentation](https://symfony.com/).
 When you want to leave the container:
 ```
 $ exit
