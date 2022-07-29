@@ -100,7 +100,7 @@ Git is installed inside `docker_www` container. You can init a project. You can 
 
 ### 8. Clone existing symfony project
 
-Place your terminal inside your `docker_db` container and clone your project with git. Then as usual :
+Place your terminal inside your `docker_db` container and clone your project with git. Then as usual change your `DATABASE_URL` and `MAILERDSN` in the `.env`, then:
 ```
 $ composer install
 $ php bin/console doctrine:database:create
