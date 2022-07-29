@@ -44,9 +44,9 @@ $ docker-compose up -d --build
 
 After installation, create a new project with:
 ```
-$ docker exec www_docker_symfony composer create-project symfony/skeleton:"^5.4" project
+$ docker exec docker_www composer create-project symfony/skeleton:"^5.4" project
 ```
-The main directory of your symfony project have to be "project". If you want to change that name, you have to do it inside docker-lamp-symfony5/php/vhosts.conf: wherever there is "project", you have to replace it by the chosen name.
+The main directory of your symfony project have to be "project". If you want to change that name, you have to do it inside `docker-lamp-symfony5/php/vhosts.conf`: wherever there is `project`, you have to replace it by the chosen name.
 A new project will be created but files are not property of the current user. For becoming the owner, just do:
 ```
 $ sudo chown -R $USER ./
@@ -67,17 +67,18 @@ Maildev is at:
 
 Let's modify the lines of the .env file that look like the following:
 ```
-DATABASE_URL=mysql://root:@db_docker_symfony:3306/db_name?serverVersion=5.7
-MAILER_DSN=smtp://maildev_docker_symfony:25
+DATABASE_URL=mysql://root:@docker_db:3306/db_name?serverVersion=5.7
+MAILER_DSN=smtp://docker_maildev:25
 ```
+You can replace `db_name` by the name you want for your database.
 
 
 
 ### 6. Then
 
-You have to interact with your symfony project. To do this, you have to place your terminal inside the container:
+You have to interact with your symfony project. To do this, you have to place your terminal inside the `docker_www` container:
 ```
-$ docker exec -it www_docker_symfony bash
+$ docker exec -it docker_www bash
 ```
 Your can interact as usual with symfony and create your database:
 ```
@@ -93,13 +94,13 @@ $ exit
 
 ### 7. Git
 
-Git is installed inside www-docker-symfony container. You can init a project. You can also clone a project from a distant repository.
+Git is installed inside `docker_www` container. You can init a project. You can also clone a project from a distant repository.
 
 
 
 ### 8. Clone existing symfony project
 
-Place your terminal inside your container and clone your project with git. Then as usual :
+Place your terminal inside your `docker_db` container and clone your project with git. Then as usual :
 ```
 $ composer install
 $ php bin/console doctrine:database:create
