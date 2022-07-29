@@ -11,7 +11,7 @@
 8. [Clone existing symfony project](#8.clone-existing-symfony-project)
 
 
-## What is this
+## 1. What is this
 
 Docker-lamp-symfony5 is a full docker configuration for developping a symfony 5 project. You can also use it without the symfony framework as a 'docker-lamp'.
 
@@ -25,13 +25,13 @@ Thanks to Yoan Bernabeu who initially authored the project at [Initial Project](
 
 
 
-### Prerequisite
+### 2. Prerequisite
 
 Docker and docker-compose installed.
 
 
 
-### Installation
+### 3. Installation
 
 Clone docker-lamp-symfony5.
 Place your terminal inside the directory you just cloned and launch the docker configuration with:
@@ -40,10 +40,12 @@ $ docker-compose up -d --build
 ```
 
 
-### New symfony project
+### 4. New symfony project
 
 After installation, create a new project with:
+```
 $ docker exec www_docker_symfony composer create-project symfony/skeleton:"^5.4" project
+```
 The main directory of your symfony project have to be "project". If you want to change that name, you have to do it inside docker-lamp-symfony5/php/vhosts.conf: wherever there is "project", you have to replace it by the chosen name.
 A new project will be created but files are not property of the current user. For becoming the owner, just do:
 ```
@@ -61,7 +63,7 @@ Maildev is at:
 
 
 
-### New project configuration
+### 5. New project configuration
 
 Let's modify the lines of the .env file that look like the following:
 ```
@@ -71,7 +73,7 @@ MAILER_DSN=smtp://maildev_docker_symfony:25
 
 
 
-### Then
+### 6. Then
 
 You have to interact with your symfony project. To do this, you have to place your terminal inside the container:
 ```
@@ -89,13 +91,13 @@ $ exit
 
 
 
-### Git
+### 7. Git
 
 Git is installed inside www-docker-symfony container. You can init a project. You can also clone a project from a distant repository.
 
 
 
-### Clone existing symfony project
+### 8. Clone existing symfony project
 
 Place your terminal inside your container and clone your project with git. Then as usual :
 ```
