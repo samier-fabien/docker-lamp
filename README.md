@@ -9,6 +9,7 @@
 6. [Then](#6-then)
 7. [Git](#7-git)
 8. [Clone existing symfony project](#8-clone-existing-symfony-project)
+9. [Connect database](#9-connect-database)
 
 
 ## 1. What is this
@@ -106,3 +107,21 @@ $ composer install
 $ php bin/console doctrine:database:create
 ...
 ```
+
+
+
+### 9. Connect database
+
+If you can't connect to database with some software like dbeaver, use:
+```
+$ docker ps
+```
+copy the `CONTAINER ID` of the mysql container and:
+```
+$ docker inspect CONTAINER_ID
+```
+It will return `"IPAddress": "172.xx.xx.x"` you can also use that command:
+```
+$ docker inspect CONTAINER_ID | grep -i ipaddress
+```
+The full address to access your database is `172.xx.xx.x:3306`, just replace `172.xx.xx.x` with the value you previously found.
