@@ -10,6 +10,7 @@
 7. [Git](#7-git)
 8. [Clone existing symfony project](#8-clone-existing-symfony-project)
 9. [Connect database](#9-connect-database)
+10. [Lack of something](#10-lack-of-something)
 
 
 ## 1. What is this
@@ -47,12 +48,17 @@ After installation, create a new project with:
 ```
 $ docker exec docker_www composer create-project symfony/skeleton:"^5.4" project
 ```
-The main directory of your symfony project have to be "project". If you want to change that name, you have to do it inside `docker-lamp-symfony5/php/vhosts.conf`: wherever there is `project`, you have to replace it by the chosen name.
-A new project will be created but files are not property of the current user. For becoming the owner, just do:
+With this command you tell docker you want to "exec" the command "composer create-project symfony/skeleton:"^5.4" project" inside the "docker_www" container.  
+The main directory of your symfony project has to be "project". If you want to change that name, you have to do it inside `docker-lamp-symfony5/php/vhosts.conf`: wherever there is `project`, you have to replace it by the chosen name.  
+If you want to interact with a container you can do as previously for a single command or you can do as followed:
 ```
-$ sudo chown -R $USER ./
+$ docker exec -it docker_www bash
 ```
-
+Once your terminal "points to" the docker_www container, you are identified as root.  
+A new project is created but files are not property of the current user. For becoming the owner, just do:
+```
+# sudo chown -R $USER ./
+```
 Your project is installed now. You can see now the new symfony homepage project at:
 **http://127.0.0.1:8741/**
 
@@ -66,7 +72,12 @@ Maildev is at:
 
 ### 5. New project configuration
 
-Let's modify the lines of the .env file that look like the following:
+Let's modify two lines of the .env file. Open the file in an editor:  
+```
+# cd project
+# nano .env
+```
+It should look like the following after modification:
 ```
 DATABASE_URL=mysql://root:@docker_db:3306/db_name?serverVersion=5.7
 MAILER_DSN=smtp://docker_maildev:25
@@ -77,20 +88,16 @@ You can replace `db_name` by the name you want for your database.
 
 ### 6. Then
 
-You have to interact with your symfony project. To do this, you have to place your terminal inside the `docker_www` container:
-```
-$ docker exec -it docker_www bash
-```
 Your can interact as usual with symfony and create your database:
 ```
-$ php bin/console doctrine:database:create
+# composer install
+# php bin/console doctrine:database:create
 ```
 Now, I won't teach you how to initiate a full symfony project, use the [documentation](https://symfony.com/).
 When you want to leave the container:
 ```
-$ exit
+# exit
 ```
-
 
 
 ### 7. Git
@@ -103,8 +110,8 @@ Git is installed inside `docker_www` container. You can init a project. You can 
 
 Place your terminal inside your `docker_db` container and clone your project with git. Then as usual change your `DATABASE_URL` and `MAILERDSN` in the `.env`, then:
 ```
-$ composer install
-$ php bin/console doctrine:database:create
+# composer install
+# php bin/console doctrine:database:create
 ...
 ```
 
@@ -125,3 +132,8 @@ It will return `"IPAddress": "172.xx.xx.x"` you can also use that command:
 $ docker inspect CONTAINER_ID | grep -i ipaddress
 ```
 The full address to access your database is `172.xx.xx.x:3306`, just replace `172.xx.xx.x` with the value you previously found.
+
+
+### 10. Lack of something
+
+If ever you need some php lib or to install vim for example, just modify the php/Dockerfile. Keep in mind your docker_www container is a little debian linux distribution.
