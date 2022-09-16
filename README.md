@@ -48,7 +48,7 @@ After installation, create a new project with:
 ```
 $ docker exec docker_www composer create-project symfony/skeleton:"^5.4" project
 ```
-With this command you tell docker you want to "exec" the command "composer create-project symfony/skeleton:"^5.4" project" inside the "docker_www" container.  
+With this command you tell docker you want to `exec` the command `composer create-project symfony/skeleton:"^5.4" project` inside the `docker_www` container.  
 The main directory of your symfony project has to be "project". If you want to change that name, you have to do it inside `docker-lamp-symfony5/php/vhosts.conf`: wherever there is `project`, you have to replace it by the chosen name.  
 If you want to interact with a container you can do as previously for a single command or you can do as followed:
 ```
